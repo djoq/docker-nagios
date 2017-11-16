@@ -1,0 +1,15 @@
+#! /bin/bash
+
+echo "we should really be running this all in docker"
+echo "Read this for reference: https://assets.nagios.com/downloads/nagioscore/docs/nagioscore/4/en/monitoring-windows.html#installing"
+exit;
+
+cd /tmp
+wget https://assets.nagios.com/downloads/ncpa/check_ncpa.tar.gz
+tar xvf check_ncpa.tar.gz
+chown nagios:nagios check_ncpa.py
+chmod 775 check_ncpa.py
+mv check_ncpa.py /usr/local/nagios/libexec
+
+echo "verifying version: "
+/usr/local/nagios/libexec/check_ncpa.py -V
