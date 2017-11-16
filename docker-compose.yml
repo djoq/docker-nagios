@@ -1,0 +1,8 @@
+version: '2'
+services:
+  nagios:
+    image: jasonrivers/nagios:latest
+    container_name: nagios4
+    ports:
+      - "8081:80"
+    restart: always
