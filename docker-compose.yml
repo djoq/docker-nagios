@@ -6,3 +6,7 @@ services:
     ports:
       - "8081:80"
     restart: always
+    volumes:
+      - ./plugins:/opt/Custom-Nagios-Plugins
+      - ./config/nagios-commands.cfg:/opt/nagios/etc/commands.cfg
+      - ./config/nagios-ncpa.cfg:/opt/nagios/etc/ncpa.cfg
