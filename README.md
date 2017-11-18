@@ -1,4 +1,4 @@
-## Nagios w/ nrdp server version 1.4.0
+## Nagios4 w/ nrdp server version 1.4.0
 
 Setup for monitoring windows machine via a remote Linux host
 Built and tested with Ubuntu 16.0.4
@@ -10,17 +10,17 @@ Built and tested with Ubuntu 16.0.4
 ### Overview
 
 The setup outlined from the official [nagios docs](https://assets.nagios.com/downloads/nagioscore/docs/nagioscore/4/en/monitoring-windows.html)
-This will build these instructions, and add the nrdp server.
+This will build these instructions as well as the nrdp server.
 
 ### Personalize your config
 
-Alter the .env file with your networking information.
+Alter the `.env` file with your networking information.
 Configuration overrides are defined in `./config`
 Edit these files to add checks and commands for the hosts you monitor.
 
 ### Agents
 
-This project is meant to work alongside at least one agent (running windows). In our case we chose ncpa.
+This project is meant to work alongside at least one agent (running windows). In this case, ncpa was tested.
 Make sure this is running before trying to connect, and update the .env file with your agent's IP or hostname.
 If you haven't an agent installed, refer here [agent](https://www.nagios.org/ncpa/getting-started.php#win-silent-install).
 
@@ -35,4 +35,7 @@ Default token is `mytoken`
 This docker image is built upon [jason rivers](https://hub.docker.com/r/jasonrivers/nagios/). Refer to this for plugin management.
 
 ### CLI
-run ./cli for more info
+execute `./cli` for more info
+
+## Roadmap
+Ensure hosts show up in gui, connections are established via CLI as of now (11-18-17).
