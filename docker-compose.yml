@@ -1,8 +1,14 @@
 version: '2'
 services:
   nagios:
-    image: jasonrivers/nagios:latest
+    build: 
+      context: .
     container_name: nagios4
     ports:
       - "8081:80"
     restart: always
+    volumes:
+      - ./config/nrdp-1.4.0/:/usr/local/nrdp/
+      - ./config/check_ncpa.py:/usr/local/nagios/libexec/check_ncpa.py
+      - ./config/nagios-commands.cfg:/usr/local/nagios/etc/commands.cfg  
+      - ./config/nagios-ncpa.cfg:/usr/local/nagios/etc/ncpa.cfg

@@ -1,0 +1,87 @@
+#! /bin/bash
+
+##
+# Wrapper for various setup scripts included in the docker-nagios
+#
+
+_usage() {
+  echo "Usage: $0 [-i IMAGE_NAME] [-c CONTAINER_NAME] <subcommand> <subcommand> [args]
+
+OPTIONS:
+
+  -i IMAGE_NAME     The name of the docker-nagios image, this is based off
+                    'jasonrivers/nagios:latest'.
+  -c CONTAINER_NAME The name of the running container.
+
+SUBCOMMANDS:
+
+  query:
+
+    $0 query agent <ip> (optional)
+    $0 query server 
+
+  debug:
+  
+    $0 debug inspect
+    $0 debug login <commands>
+"
+  exit 1
+}
+
+while getopts ":c:i:" OPT; do
+  case $OPT in
+    c)
+      CONTAINER_NAME="$OPTARG"
+      ;;
+    i)
+      IMAGE_NAME="$OPTARG"
+      ;;
+   \?)
+     echo "Invalid option: -$OPTARG" >&2
+     ;;
+  esac
+done
+
+shift $((OPTIND-1))
+
+case $1 in
+
+  query)
+    shift
+    case $1 in
+
+      agent)
+        shift
+        echo "List available (agent host is defined in .env)"
+        source .env
+        docker exec nagios4 /usr/local/nagios/libexec/check_ncpa.py -H $AGENT_HOST -t 'mytoken' --list
+        ;;
+      server)
+        shift
+        echo "write a query for server"
+        ;;
+      *)
+        _usage
+        ;;
+    esac
+    ;;
+
+
+  debug)
+    shift
+    case $1 in
+      inspect)
+        docker inspect nagios4
+        ;;
+      login)
+        docker exec -it nagios4 /bin/bash
+        ;;
+      *)
+        _usage
+        ;;
+    esac
+    ;;
+  *)
+    _usage
+    ;;
+esac
