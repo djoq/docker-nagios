@@ -31,5 +31,8 @@ Login to the GUI via browser with creds nagiosadmin and passwd => nagios
 Test the NRDP configuration at [localhost:8081/nrdp](http://localhost:8081/nrdp)
 Default token is `mytoken`
 
+### Plugins
+This docker image is built upon [jason rivers](https://hub.docker.com/r/jasonrivers/nagios/). Refer to this for plugin management.
+
 ### CLI
 run ./cli for more info
