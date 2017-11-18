@@ -44,7 +44,15 @@ This docker image is built upon [jason rivers](https://hub.docker.com/r/jasonriv
 Refer to this for plugin management.
 
 ### CLI
-execute `./cli` for more info
+execute `./cli` for help.
+
+Command       | Arguments     | Options (Required) 
+--- | --- | ---                    
+query | agent  | IP (no)            
+""  | server | IP (no)            
+debug | inspect       | -                  
+"" | login         | -                  
+
 
 ## Roadmap
 Ensure hosts show up in gui, connections are established via CLI as of now (11-18-17).
