@@ -30,8 +30,8 @@ Make sure this is running before trying to connect, and update the .env file wit
 
 If you haven't an agent installed, refer here [agent](https://www.nagios.org/ncpa/getting-started.php#win-silent-install).
 
-### GUI
-Login to the GUI via browser with creds nagiosadmin and passwd => nagios
+### NAGIOS GUI
+Login to the GUI via your favorite [browser](http://localhost:8081/) with creds nagiosadmin and passwd => nagios
 
 ### NRDP
 Test the NRDP configuration at [localhost:8081/nrdp](http://localhost:8081/nrdp)
